@@ -5,7 +5,7 @@ class BasePage():
         self.page=page
     
     def navigate(self,url):
-        self.page.goto(url)
+        self.page.goto(url,wait_until="domcontentloaded")
     
     def click(self,locator):
         self.page.click(locator)
