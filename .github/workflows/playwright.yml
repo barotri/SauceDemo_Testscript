@@ -2,9 +2,9 @@ name: Run Playwright Tests (Python POM)
 
 on:
   push:
-    branches: [ demo-pom ]
+    branches: [ main ]
   pull_request:
-    branches: [ demo-pom ]
+    branches: [ main ]
 
 jobs:
   test:
