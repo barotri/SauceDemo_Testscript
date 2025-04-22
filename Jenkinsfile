@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright/python:v1.51.0-noble'
-            args '--user 1001'
+            args '--user root'
         }
     }
 
