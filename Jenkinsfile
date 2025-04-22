@@ -21,19 +21,15 @@ pipeline {
         }
 
         stage('Set up Python & Install dependencies') {
-            steps {
-                sh '''
-                    # Kiểm tra phiên bản Python và pip
-                    python3 --version
-                    python3 -m pip --version
+    steps {
+        sh '''
+            echo "ipc@12Ipc" | sudo -S python3 -m pip install --upgrade pip
+            echo "ipc@12Ipc" | sudo -S pip install -r requirements.txt
+            echo "ipc@12Ipc" | sudo -S pip install pytest-playwright
+        '''
+    }
+}
 
-                    # Cài đặt pip và các dependencies
-                    python3 -m pip install --upgrade pip
-                    pip install -r requirements.txt
-                    pip install pytest-playwright
-                '''
-            }
-        }
 
         stage('Install Playwright Browsers') {
             steps {
