@@ -22,13 +22,13 @@ pipeline {
         }
 
         stage('Set up Python & Install dependencies') {
-            steps {
-                sh '''
-                    python -m pip install --upgrade pip
-                    pip install -r requirements.txt
-                    pip install pytest-playwright
-                '''
-            }
+    steps {
+        sh '''
+            python3 -m pip install --upgrade pip
+            pip3 install -r requirements.txt
+            pip3 install pytest-playwright
+        '''
+        }
         }
 
         stage('Install Playwright Browsers') {
