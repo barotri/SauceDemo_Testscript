@@ -39,7 +39,14 @@ pipeline {
 
         stage('Run tests with pytest') {
             steps {
-                sh 'pytest tests/ --html=reports/report.html --self-contained-html'
+                script {
+                    try {
+                        sh 'pytest tests/ --html=reports/report.html --self-contained-html'
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        throw e
+                    }
+                }
             }
         }
 
@@ -49,3 +56,4 @@ pipeline {
             }
         }
     }
+}
