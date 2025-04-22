@@ -49,13 +49,3 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            junit 'tests/**/junit-*.xml' // nếu bạn dùng thêm pytest-junit
-        }
-        failure {
-            echo 'Build failed. Check the test report.'
-        }
-    }
-}
