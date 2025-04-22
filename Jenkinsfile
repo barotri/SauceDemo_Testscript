@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright/python:v1.51.0-noble'
-           // args '--user 1001'
         }
     }
 
@@ -22,17 +21,23 @@ pipeline {
         }
 
         stage('Set up Python & Install dependencies') {
-    steps {
-        sh '''
-            python3 -m pip install --upgrade pip
-            pip3 install -r requirements.txt
-            pip3 install pytest-playwright
-        '''
-        }
+            steps {
+                sh '''
+                    # Kiểm tra phiên bản Python và pip
+                    python3 --version
+                    python3 -m pip --version
+
+                    # Cài đặt pip và các dependencies
+                    python3 -m pip install --upgrade pip
+                    pip install -r requirements.txt
+                    pip install pytest-playwright
+                '''
+            }
         }
 
         stage('Install Playwright Browsers') {
             steps {
+                // Cài đặt Playwright Browsers
                 sh 'playwright install'
             }
         }
