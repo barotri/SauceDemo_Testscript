@@ -4,6 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   playwright:
     name: 'Playwright Tests'
@@ -13,22 +14,26 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
+
+      - name: Add ~/.local/bin to PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest-playwright
+
       - name: Install Playwright Browsers
-        run: |
-          export PATH="$HOME/.local/bin:$PATH"
-          playwright install
+        run: playwright install
+
       - name: Run tests with pytest
-        run: |
-          pytest tests/ --html=reports/report.html --self-contained-html
+        run: pytest tests/ --html=reports/report.html --self-contained-html
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4.6.2
