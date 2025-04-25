@@ -3,7 +3,7 @@ from pages.base_page import BasePage
 class HomePage(BasePage):
     def __init__(self,page):
         super().__init__(page)
-        self.Page_Title=page.locator("/html/head/title")
+        self.Page_Title=page.locator("//title[text()='Swag Labs']")
 
 
     def get_login_message(self):
