@@ -5,16 +5,16 @@ class LoginPage(BasePage):
         super().__init__(page)
         self.username_field=page.locator("//input[@placeholder='Username']")
         self.password_field=page.locator("//input[@placeholder='Password']")
-        self.login_button=page.locator("//button[@type='submit']")
+        self.login_button=page.locator("//input[@type='submit']")
         #Error message
-        self.error_message=page.locator("//p[text()='Invalid credentials']")
+        self.error_message=page.locator("//h3[text()='Epic sadface: Username and password do not match any user in this service']")
 
     # def navigate_to_login(self):
     #     self.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
     
     def login_user(self,username,password):
-        self.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+        self.navigate("https://www.saucedemo.com/")
         self.username_field.fill(username)
         self.password_field.fill(password)
         self.login_button.click()
