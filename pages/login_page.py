@@ -7,7 +7,7 @@ class LoginPage(BasePage):
         self.password_field=page.locator("//input[@placeholder='Password']")
         self.login_button=page.locator("//input[@type='submit']")
         #Error message
-        self.error_message=page.locator("//h3[text()='Epic sadface: Username and password do not match any user in this service']")
+        self.error_message=page.locator("//h3[@data-test='error']")
 
     
     def login_user(self,username,password):
@@ -15,3 +15,7 @@ class LoginPage(BasePage):
         self.username_field.fill(username)
         self.password_field.fill(password)
         self.login_button.click()
+
+    def get_error_text(self):
+        return self.error_message.inner_text()
+

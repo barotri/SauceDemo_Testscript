@@ -12,9 +12,9 @@ def test_login_valid_TC01(page):
 def test_login_invalid_password_TC02(page):
     login_page = LoginPage(page)
     login_page.login_user("standard_user","wrongpassword")
-    expect(login_page.error_message).to_have_text("Epic sadface: Username and password do not match any user in this service")
+    assert "Epic sadface: Username and password do not match any user in this service" in login_page.get_error_text()
     
 def test_login_invalid_username_TC03(page):
     login_page = LoginPage(page)
     login_page.login_user("wrongusername","secret_sauce")
-    expect(login_page.error_message).to_have_text("Epic sadface: Username and password do not match any user in this service")    
+    assert "Epic sadface: Username and password do not match any user in this service" in login_page.get_error_text()  
