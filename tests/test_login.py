@@ -7,7 +7,7 @@ def test_login_valid_tc1(page):
     login_page = LoginPage(page)
     home_page = HomePage(page)
     login_page.login_user("standard_user","secret_sauce")
-    expect(home_page.Page_Title).to_have_text("Dashboard")
+    expect(home_page.Page_Title).to_have_text("Swag Labs")
     
 def test_login_invalid_tc2(page):
     login_page = LoginPage(page)
