@@ -12,4 +12,4 @@ def test_login_valid_tc1(page):
 def test_login_invalid_tc2(page):
     login_page = LoginPage(page)
     login_page.login_user("Admin","wrongpassword")
-    expect(login_page.error_message).to_have_text("Invalid credentials")
+    expect(login_page.error_message).to_have_text("Epic sadface: Username and password do not match any user in this service")
