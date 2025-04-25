@@ -9,9 +9,6 @@ class LoginPage(BasePage):
         #Error message
         self.error_message=page.locator("//h3[text()='Epic sadface: Username and password do not match any user in this service']")
 
-    # def navigate_to_login(self):
-    #     self.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-
     
     def login_user(self,username,password):
         self.navigate("https://www.saucedemo.com/")
